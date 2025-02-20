@@ -1,6 +1,7 @@
 @font-face {
 	font-family: 'boldbold';
 	src: url('fonts/bold.ttf') format('truetype');
+	font-display: swap;
 }
 
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
@@ -9,6 +10,7 @@ body {
 	background-color: #0d0d0d;
 	color: #f2f2f2;
 	margin: 0;
+	overflow-x: hidden;
 }
 
 .header {
@@ -63,6 +65,7 @@ body {
 .logo-text-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .center-logo {
