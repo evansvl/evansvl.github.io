@@ -117,6 +117,14 @@ body {
 	font-size: 16px;
 	font-family: 'IBM Plex Sans', sans-serif;
 	line-height: 1.5;
+	text-align: left;
+}
+
+.about-box a {
+	text-decoration: underline;
+	color: #f2f2f2;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 16px;
 }
 
 .projects-section {
