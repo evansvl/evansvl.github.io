@@ -6,6 +6,19 @@
 
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
 
+@keyframes appear {
+	from {
+		opacity: 0;
+		scale: 0.5;
+		transform: translateY(50px);
+	}
+	to {
+		opacity: 1;
+		scale: 1;
+		transform: translateY(0);
+	}
+}
+
 body {
 	background-color: #0d0d0d;
 	color: #f2f2f2;
@@ -129,27 +142,42 @@ main {
 
 .about-grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 1fr 2fr;
 	gap: 60px;
-	margin: 20px;
+	margin: 20px 300px;
 }
 
 .about-box {
-	background-color: #1a1a1a;
 	border-radius: 8px;
 	padding: 20px;
 	text-align: center;
+	margin-top: 15vh;
+	overflow: hidden;
+	animation: appear linear;
+	animation-timeline: view();
+	animation-range: entry 0 cover 30%;
 }
 
 .about-box h2,
 .about-box h3 {
 	font-family: 'boldbold', sans-serif;
-	font-size: 28px;
-	margin-bottom: 10px;
+	font-size: 52px;
+}
+
+.about-me {
+	margin-top: 220px;
+}
+
+.github {
+	margin-top: 190px;
+}
+
+.streaming {
+	margin-top: 250px;
 }
 
 .about-box p {
-	font-size: 16px;
+	font-size: 30px;
 	font-family: 'IBM Plex Sans', sans-serif;
 	line-height: 1.5;
 	text-align: justify;
@@ -164,8 +192,23 @@ main {
 	font-size: 16px;
 }
 
+.about-box:nth-child(odd) {
+	grid-column: 1 / span 1;
+}
+
+.about-box:nth-child(even) {
+	grid-column: 2 / span 1;
+}
+
+.github-stats img {
+	width: 70%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .twitch-embed {
-	align-self: center;
 	width: 420px;
 	height: 236.3px;
 	border-radius: 8px;
@@ -189,34 +232,112 @@ main {
 
 .projects-grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
+	grid-template-columns: 1fr 2fr;
+	gap: 60px;
+	margin: 20px 300px;
 }
 
 .project-box {
-	background-color: #2a2a2a;
 	border-radius: 8px;
 	padding: 20px;
-	margin-bottom: 20px;
 	text-align: center;
+	margin-top: 15vh;
+	overflow: hidden;
+	animation: appear linear;
+	animation-timeline: view();
+	animation-range: entry 0 cover 30%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: inherit;
+}
+
+.project-box h2 {
+	text-decoration: none;
+	font-family: 'boldbold', sans-serif;
+	font-size: 52px;
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+}
+
+.project-box h2:hover {
+	text-decoration: underline;
 }
 
 .project-photo {
 	width: 100%;
-	height: auto;
+	height: 100%;
+	max-width: 500px;
+	max-height: 500px;
+	object-fit: cover;
 	border-radius: 8px;
-}
-
-.project-title {
-	font-family: 'boldbold', sans-serif;
-	font-size: 22px;
-	margin-top: 10px;
+	transition: opacity 0.5s ease;
+	margin: 0 auto;
 }
 
 .project-description {
-	font-size: 16px;
+	font-size: 26px;
 	font-family: 'IBM Plex Sans', sans-serif;
-	margin-top: 10px;
+	line-height: 1.5;
+	text-align: justify;
+	position: absolute;
+	max-width: 460px;
+	max-height: 460px;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	border-radius: 8px;
+}
+
+.project-photo:hover + .project-description,
+.project-description:hover {
+	opacity: 1;
+}
+
+.project-photo:hover {
+	opacity: 0.3;
+}
+
+.project-box:hover .project-photo {
+	opacity: 0.3;
+}
+
+.project-box:hover .project-description {
+	opacity: 1;
+}
+
+.project-box a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.project-box a:hover {
+	text-decoration: none;
+}
+
+.project-box:nth-child(odd) {
+	grid-column: 1 / span 1;
+}
+
+.project-box:nth-child(even) {
+	grid-column: 2 / span 1;
 }
 
 .copied-box {
@@ -242,12 +363,13 @@ main {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
+	border-top: 1px solid #333;
 }
 
 .footer-box {
 	padding-bottom: 10px;
 	position: relative;
-	left: 200px;
+	margin-left: 100px;
 }
 
 .footer-box h3 {
@@ -262,10 +384,14 @@ main {
 }
 
 .footer-box a {
-	text-decoration: underline;
+	text-decoration: none;
 	color: #f2f2f2;
 	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 16px;
+}
+
+.footer-box a:hover {
+	text-decoration: underline;
 }
 
 #snow-container {
