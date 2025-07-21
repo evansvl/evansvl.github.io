@@ -396,19 +396,19 @@ main {
 }
 
 #snow-container {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	pointer-events: none;
 	z-index: -3;
-	background-attachment: fixed;
+	background-attachment: absolute;
 }
 
 .snowflake {
 	position: absolute;
-	top: -10px;
+	top: -10%;
 	width: 10px;
 	height: 10px;
 	background-color: #fff;
@@ -419,6 +419,6 @@ main {
 
 @keyframes fall {
 	to {
-		transform: translateY(400vh);
+		transform: translateY(110vh);
 	}
 }

@@ -4,16 +4,27 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.body.appendChild(snowContainer)
 
 	for (let i = 0; i < 100; i++) {
+		createSnowflake()
+	}
+
+	function createSnowflake() {
 		const snowflake = document.createElement('div')
 		snowflake.className = 'snowflake'
-		snowflake.style.scale = `${Math.random(1) * 1 * 0.5}`
-		snowflake.style.left = `${Math.random() * 100}vw`
-		snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`
-		snowflake.style.animationDelay = `${Math.random() * 5}s`
+		resetSnowflake(snowflake)
 		snowContainer.appendChild(snowflake)
 
 		snowflake.addEventListener('animationend', function () {
-			snowflake.remove()
+			resetSnowflake(snowflake)
 		})
+	}
+
+	function resetSnowflake(snowflake) {
+		const size = Math.random() * 6.5 + 2
+		snowflake.style.width = `${size}px`
+		snowflake.style.height = `${size}px`
+		snowflake.style.left = `${Math.random() * 100}vw`
+		snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`
+		snowflake.style.animationDelay = `${Math.random() * 5}s`
+		snowflake.style.animationName = 'fall'
 	}
 })
